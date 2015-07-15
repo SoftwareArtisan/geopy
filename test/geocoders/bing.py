@@ -67,7 +67,7 @@ class BingTestCase(GeocoderTestBase):
         """
         Bing.geocode using `user_location`
         """
-        pensylvania = "20 Main St, Bally, PA 19503, United States"
+        pensylvania = "20 Main St, Walnutport, PA 18088, United States"
         colorado = "20 Main St, Broomfield, CO 80020, United States"
 
         pennsylvania_bias = (40.922351, -75.096562)
@@ -106,3 +106,18 @@ class BingTestCase(GeocoderTestBase):
 
         self.assertEqual(address['neighborhood'], "Praha 6")
         self.assertEqual(address['countryRegionIso2'], "CZ")
+
+    def test_structured_query(self):
+        """
+        Bing.geocode using structured query
+        """
+        address_dict = {'postalCode': '80020', 'countryRegion': 'United States'}
+        res = self._make_request(
+            self.geocoder.geocode,
+            query=address_dict
+        )
+        if res is None:
+            unittest.SkipTest("Bing sometimes returns no result")
+        else:
+            address = res.raw['address']
+            self.assertEqual(address['locality'], "Broomfield")

@@ -1,6 +1,25 @@
+1.10.0
+------
+2015-04-05
+
+* CHANGED: GeocodeFarm now uses version 3 of the service's API, which
+    allows use by unauthenticated users, multiple results, and
+    SSL/TLS. You may need to obtain a new API key from GeocodeFarm, or
+    use `None` for their free tier. Contributed by Eric Palakovich Carr.
+
+* ADDED: DataBC geocoder for use with the British Columbia government's
+    DataBC service. Contributed by Benjamin Trigona-Harany.
+
+* ADDED: Placefinder's geocode method now requests a timezone if the
+    `with_timezone` parameter is true. Contributed by willr.
+
+* FIXED: Nominatim specifies a `viewbox` parameter rather than the
+    apparently deprecated `view_box`.
+
+
 1.9.1
 -----
-2014-02-17
+2015-02-17
 
 * FIXED: Fix support for GoogleV3 bounds parameter. Contributed by
     Benjamin Trigona-Harany.
@@ -8,7 +27,7 @@
 
 1.9.0
 -----
-2014-02-12
+2015-02-12
 
 * CHANGED: MapQuest geocoder removed as the API it uses is now only available
     to enterprise accounts. OpenMapQuest is a replacement for
@@ -27,7 +46,7 @@
 
 1.8.1
 -----
-2014-01-28
+2015-01-28
 
 * FIXED: GoogleV3 geocoder did not send API keys for reverse and timezone
     methods.
@@ -35,7 +54,7 @@
 
 1.8.0
 -----
-2014-01-21
+2015-01-21
 
 * ADDED: NaviData geocoder added. Contributed by NaviData.
 
@@ -46,7 +65,7 @@
 
 1.7.1
 -----
-2014-01-05
+2015-01-05
 
 * FIXED: IGN France geocoder's address formatting better handles results
     that do not have a building number. Contributed by Thomas Gratier.
